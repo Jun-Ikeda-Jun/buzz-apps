@@ -1,0 +1,240 @@
+/* 共通スタイル: 全アプリで使う基盤CSS */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.app-header {
+  text-align: center;
+  padding: 30px 0 20px;
+}
+.app-header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.app-header p {
+  color: #888;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* アップロードエリア */
+.drop-zone {
+  border: 2px dashed #333;
+  border-radius: 16px;
+  padding: 60px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #111;
+}
+.drop-zone:hover,
+.drop-zone.drag-over {
+  border-color: #fff;
+  background: #1a1a1a;
+}
+.drop-zone .icon {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+.drop-zone .text {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+/* プログレスバー */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #222;
+  border-radius: 3px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+/* プレビュー */
+.preview-area {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 20px 0;
+  background: #111;
+}
+.preview-area canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ボタン */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+.btn {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.2s;
+  text-decoration: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn-primary {
+  background: #fff;
+  color: #000;
+}
+.btn-share {
+  background: #1d9bf0;
+  color: #fff;
+}
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ステータスメッセージ */
+.status {
+  text-align: center;
+  color: #888;
+  font-size: 0.85rem;
+  min-height: 20px;
+  margin: 8px 0;
+}
+
+/* テンプレ選択（アプリごとに使う） */
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+.template-option {
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.8rem;
+  transition: border-color 0.2s;
+}
+.template-option.selected {
+  border-color: #a855f7;
+}
+.template-option:hover {
+  border-color: #666;
+}
+
+/* フッター */
+.app-footer {
+  text-align: center;
+  padding: 30px 0;
+  color: #444;
+  font-size: 0.8rem;
+}
+.app-footer a {
+  color: #666;
+}
+
+/* スマホ最適化 */
+
+/* タップ領域を大きく、ホバーなし */
+@media (hover: none) and (pointer: coarse) {
+  .drop-zone {
+    padding: 50px 16px;
+    border-width: 3px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .drop-zone .text {
+    font-size: 1rem;
+  }
+  .drop-zone .icon {
+    font-size: 3.5rem;
+  }
+  .btn {
+    padding: 16px 20px;
+    font-size: 1.1rem;
+    min-height: 52px; /* iOS最小タップ領域 */
+  }
+  .template-option {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* セーフエリア対応（ノッチ・角丸端末） */
+body {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* PWA感: スクロールのバウンス防止 */
+html {
+  overscroll-behavior: none;
+}
+
+/* テキスト選択の防止（アプリっぽく） */
+.drop-zone,
+.btn,
+.template-option {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* レスポンシブ */
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+  .app-header h1 {
+    font-size: 1.4rem;
+  }
+  .app-header p {
+    font-size: 0.85rem;
+  }
+  .template-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+}

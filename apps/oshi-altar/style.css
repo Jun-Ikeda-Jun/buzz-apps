@@ -1,0 +1,13 @@
+/* oshi-altar 固有スタイル */
+
+/* テンプレートのサムネイル */
+.template-option .preview-thumb {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}

@@ -1,0 +1,42 @@
+/* pet-stamp 固有スタイル */
+
+/* テンプレートのサムネイル */
+.template-option .preview-thumb {
+  width: 100%;
+  aspect-ratio: 37 / 32;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+/* テキスト入力行 */
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-field-text {
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  padding: 10px 14px;
+  font-size: 1rem;
+  width: 240px;
+  text-align: center;
+}
+
+.input-field-text::placeholder {
+  color: #777;
+}
+
+.input-field-text:focus {
+  outline: none;
+  border-color: #888;
+}

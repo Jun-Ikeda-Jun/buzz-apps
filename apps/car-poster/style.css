@@ -1,0 +1,13 @@
+/* car-poster 固有スタイル */
+
+/* テンプレートのサムネイル（横長比率） */
+.template-option .preview-thumb {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
